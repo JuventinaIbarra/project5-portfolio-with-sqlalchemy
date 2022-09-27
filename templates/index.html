@@ -1,0 +1,60 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <section class="header">
+        <br></br>
+        <h1>Juventina Ibarra</h1>
+        <h4>I am a college business management student with an interest in technology</h4>
+        <p>Knowledge in marketing, UX design, accounting, and human resources.</p>
+        <img src="/static/img/juven.jpg" alt="selfie">
+    </section>
+    <section id="about">
+        <h2>About Me</h2>
+        <p> My name is Juventina Ibarra. I am a university student, currently in my 4th year of business administration, where I have learned the basics of financial accounting, marketing, business statistics, corporate law, human resources, quality systems, and development of corporate skills, among others.</p>
+    </section>
+    <section id="skills">
+        <i class="fas fa-laptop-code"></i>
+        <h3>Skills</h3>
+        <ul>
+            <li>Python</li>
+            <li>UX design</li>
+            <li>Business administration</li>
+            <li>Marketing</li>
+            <li>Accounting</li>
+            <li>Human resources</li>
+            <li>Excel</li>
+            <li>SQLAlchemy</li>
+            <li>Git/Github</li>
+            <li>HTML/CSS</li>
+        </ul>
+    </section>
+    <section id="projects">
+        <i class="fas fa-file-code"></i>
+        <h2>Projects</h2>
+        <div id="project-list">
+            {% for project in projects %}
+            <div id="project{{ project.id }}" class="a-project">
+                <a href="{{url_for('project_view', project_id=project.id)}}"><h3>{{ project.title }}</h3></a>
+                <a target="_blank" href="{{project.repo}}" class="github-btn">
+                    <i class="fab fa-github"></i>
+                    View on GitHub
+                </a>
+                <p>
+                    {{ project.description[0:150] }}...
+                </p>
+                <p>
+                    Skills: {{ project.skills }}
+                </p>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    <section id="contact">
+        <i class="fas fa-paper-plane"></i>
+        <h2>Contact</h2>
+        <p>
+            <i class="fas fa-envelope"></i>
+            <a href="mailto:juventinaibarra@gmail.com">Email Me!</a>
+        </p>
+    </section>
+{% endblock %}
